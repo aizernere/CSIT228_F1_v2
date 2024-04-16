@@ -29,6 +29,8 @@ public class HelloApplication extends Application {
 //        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 //        stage.setTitle("Hello!");
 //        stage.setScene(scene);
+        Thread CRUD = new Thread(new Account());
+        CRUD.start();
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -99,21 +101,67 @@ public class HelloApplication extends Application {
         grid.add(btnShow, 2,2);
 
         Button btnLogin = new Button("Log In");
-        btnLogin.setFont(Font.font(40));
+        btnLogin.setFont(Font.font(30));
         grid.add(btnLogin, 0, 3, 2, 1);
+
+        Button btnRegister = new Button("Register");
+        btnRegister.setFont(Font.font(30));
+        grid.add(btnRegister, 0, 4, 2, 1);
+
+        Button btnChangePassword = new Button("Change Password");
+        btnChangePassword.setFont(Font.font(30));
+        grid.add(btnChangePassword, 0, 5, 2, 1);
+
+        Button btnDeleteAccount = new Button("Delete Account");
+        btnDeleteAccount.setFont(Font.font(30));
+        grid.add(btnDeleteAccount, 0, 6, 2, 1);
 
         btnLogin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Hello");
-                try {
-                    Parent p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
-                    Scene s = new Scene(p);
-                    stage.setScene(s);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                int login=0;
+                String username = tfUsername.getText();
+                String password  = pfPassword.getText();
+                Account findAccount = new Account();
+                login = findAccount.ReadData(username, password);
+                if(login==1){
+                    try {
+                        Parent p = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+                        Scene s = new Scene(p);
+                        stage.setScene(s);
+                        stage.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+
+
+            }
+        });
+
+        btnRegister.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                String username = tfUsername.getText();
+                String password  = pfPassword.getText();
+                Account newAccount = new Account();
+                newAccount.InsertData(username, password);
+            }
+        });
+
+        btnChangePassword.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                int success=0;
+                String username = tfUsername.getText();
+                String password  = pfPassword.getText();
+                Account findAccount = new Account();
+                success = findAccount.UpdateData(username, password);
+                if(success==1){
+                    System.out.println("Password Changed.");
+                }
+
+
             }
         });
 
