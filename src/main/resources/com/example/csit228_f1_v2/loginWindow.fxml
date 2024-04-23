@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="150.0" maxWidth="250.0" minHeight="150.0" minWidth="250.0" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.LoginWindowController">
+   <children>
+      <AnchorPane maxHeight="150.0" maxWidth="250.0" minHeight="150.0" minWidth="250.0" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <Button fx:id="btnExit" layoutX="192.0" layoutY="119.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#close" text="exit">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font></Button>
+            <Button fx:id="btnLogin" layoutX="135.0" layoutY="119.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" text="login">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font></Button>
+            <Label layoutX="14.0" layoutY="45.0" text="Username" textFill="#3d5890">
+               <font>
+                  <Font name="Tahoma Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfUser" layoutX="86.0" layoutY="40.0" />
+            <PasswordField fx:id="pfPass" layoutX="86.0" layoutY="75.0" />
+            <Label layoutX="16.0" layoutY="80.0" text="Password" textFill="#3d5890">
+               <font>
+                  <Font name="Tahoma Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutY="98.0" maxWidth="250.0" minWidth="250.0" text="                                                                            " textFill="#838383" underline="true" />
+         </children></AnchorPane>
+      <AnchorPane maxHeight="17.0" maxWidth="250.0" minHeight="17.0" minWidth="250.0" prefHeight="17.0" prefWidth="250.0" style="-fx-background-radius: 5 5 0 0; -fx-background-color: #a9bde8;">
+         <children>
+            <Label layoutX="8.0" text="Login">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font></Label>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

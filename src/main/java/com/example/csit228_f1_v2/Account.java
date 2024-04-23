@@ -6,4 +6,15 @@ public class Account implements Runnable {
     public void run() {
 
     }
+
+    public int ReadData(String username, String password) {
+        return 1;
+    }
+
+    public void InsertData(String username, String password) {
+    }
+
+    public int UpdateData(String username, String password) {
+        return 1;
+    }
 }
