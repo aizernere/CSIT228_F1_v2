@@ -13,62 +13,62 @@
                <image>
                   <Image url="@RO_StatusWindow.png" />
                </image></ImageView>
-            <Label fx:id="str" layoutX="60.0" layoutY="192.0" text="str">
+            <Label fx:id="str" layoutX="56.0" layoutY="192.0" text="null">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="agi" layoutX="58.0" layoutY="207.0" text="agi">
+            <Label fx:id="agi" layoutX="56.0" layoutY="207.0" text="null">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="vit" layoutX="60.0" layoutY="224.0" text="vit">
+            <Label fx:id="vit" layoutX="56.0" layoutY="224.0" text="null">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="intel" layoutX="60.0" layoutY="240.0" text="int">
+            <Label fx:id="intel" layoutX="56.0" layoutY="240.0" text="null">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="dex" layoutX="56.0" layoutY="256.0" text="dex">
+            <Label fx:id="dex" layoutX="56.0" layoutY="256.0" text="null">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="luk" layoutX="58.0" layoutY="273.0" text="luk">
+            <Label fx:id="luk" layoutX="56.0" layoutY="273.0" text="null">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <ImageView fx:id="plusStr" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="plusStr" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="194.0" onMouseClicked="#strUp" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@arw_right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="plusAgi" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="plusAgi" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="210.0" onMouseClicked="#agiUp" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@arw_right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="plusVit" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="plusVit" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="226.0" onMouseClicked="#vitUp" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@arw_right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="plusInt" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="plusInt" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="242.0" onMouseClicked="#intUp" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@arw_right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="plusDex" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="plusDex" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="258.0" onMouseClicked="#dexUp" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@arw_right.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="plusLuk" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="plusLuk" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="274.0" onMouseClicked="#lukUp" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@arw_right.png" />
                </image>
@@ -88,17 +88,17 @@
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnDelete" layoutX="288.0" layoutY="246.0" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="delete account">
+            <Button fx:id="btnDelete" layoutX="288.0" layoutY="246.0" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteUserChar" prefHeight="25.0" prefWidth="100.0" text="delete account">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnLvl" layoutX="387.0" layoutY="80.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Level Up">
+            <Button fx:id="btnLvl" layoutX="387.0" layoutY="80.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#levelup" prefHeight="25.0" prefWidth="200.0" text="Level Up">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnReset" layoutX="387.0" layoutY="149.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Reset">
+            <Button fx:id="btnReset" layoutX="387.0" layoutY="149.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#resetLvl" prefHeight="25.0" prefWidth="200.0" text="Reset">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
@@ -108,11 +108,26 @@
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="btnMax" layoutX="387.0" layoutY="114.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Level to 99">
+            <Button fx:id="btnMax" layoutX="387.0" layoutY="114.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#maxLvl" prefHeight="25.0" prefWidth="200.0" text="Level to 99">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Button>
+            <Label fx:id="lblUser" layoutX="405.0" layoutY="33.0" text="null">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblLvl" layoutX="405.0" layoutY="56.0" text="null">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="pts" layoutX="257.0" layoutY="254.0" text="pts">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </children>
 </AnchorPane>

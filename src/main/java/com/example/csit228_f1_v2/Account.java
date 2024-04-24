@@ -1,6 +1,10 @@
 package com.example.csit228_f1_v2;
 
+import javafx.scene.control.Label;
+
 import java.sql.*;
+
+import static com.example.csit228_f1_v2.CharacterWindowController.myStats;
 
 public class Account implements Runnable {
     private String username;
@@ -114,33 +118,50 @@ public class Account implements Runnable {
     }
 
 
-    public int UpdateData(String username, String password) {
-        try(Connection c = MySQLConnection.getConnection();
-            PreparedStatement statement = c.prepareStatement(
-                    "UPDATE users SET name=? WHERE id=?"
-            )){
-            String new_name = "Malt John Vianney Solon";
-            int id = 4;
-            statement.setString(1, new_name);
-            statement.setInt(2, id);
-            int rowsUpdated = statement.executeUpdate();
-            System.out.println("Rows Updated: " + rowsUpdated);
-        }catch (SQLException e){
+
+    public void DeleteData(int myCharID){
+        int myUserID = -1; // Initialize to an invalid value
+
+        try (Connection c = MySQLConnection.getDatabase();
+             PreparedStatement charStatement = c.prepareStatement(
+                     "SELECT userID FROM tblchar WHERE charID=?")) {
+
+            charStatement.setInt(1, myCharID);
+            ResultSet resultSet = charStatement.executeQuery();
+            if (resultSet.next()) {
+                myUserID = resultSet.getInt("userID");
+            }
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 1;
-    }
 
-    public void DeleteData(){
-        try(Connection c = MySQLConnection.getConnection();
-            PreparedStatement statement = c.prepareStatement(
-                    "DELETE FROM users WHERE id>?"
-            )){
-            int starting_id = 2;
-            statement.setInt(1, starting_id);
-            int rowsDeleted = statement.executeUpdate();
-            System.out.println("Rows Updated: " + rowsDeleted);
-        }catch (SQLException e){
+
+        try (Connection c = MySQLConnection.getDatabase();
+             PreparedStatement charStatement = c.prepareStatement(
+                     "DELETE FROM tblchar WHERE charID=?");
+             PreparedStatement userStatement = c.prepareStatement(
+                     "DELETE FROM tbluser WHERE userID=?")) {
+
+
+            c.setAutoCommit(false);
+
+            charStatement.setInt(1, myCharID);
+            int charRowsDeleted = charStatement.executeUpdate();
+            System.out.println("Character Rows Deleted: " + charRowsDeleted);
+            if(charRowsDeleted==1){
+                userStatement.setInt(1, myUserID);
+                int userRowsDeleted = userStatement.executeUpdate();
+                System.out.println("User Rows Deleted: " + userRowsDeleted);
+                c.commit();
+                System.out.println("Successfully deleted account.");
+            }
+
+
+
+
+        } catch (SQLException e) {
+
             e.printStackTrace();
         }
     }
@@ -203,5 +224,37 @@ public class Account implements Runnable {
             e.printStackTrace();
         }
         return new Account();
+    }
+
+    public int UpdateData(Label str, Label agi, Label vit, Label intel, Label dex, Label luk, int myCharID) {
+        int rowsUpdated = 0;
+        try(Connection c = MySQLConnection.getDatabase();
+            PreparedStatement statement = c.prepareStatement(
+                    "UPDATE tblchar SET pts = 0, str = ?, agi = ?, vit=?, statInt=?, dex=? , luk = ? WHERE charID=?"
+            )){
+
+            statement.setInt(1, Integer.parseInt(str.getText()));
+            statement.setInt(2, Integer.parseInt(agi.getText()));
+            statement.setInt(3, Integer.parseInt(vit.getText()));
+            statement.setInt(4, Integer.parseInt(intel.getText()));
+            statement.setInt(5, Integer.parseInt(dex.getText()));
+            statement.setInt(6, Integer.parseInt(luk.getText()));
+            statement.setInt(7, myCharID);
+            rowsUpdated = statement.executeUpdate();
+            System.out.println("Rows Updated: " + rowsUpdated);
+
+            //update
+            Account myChar = new Account();
+            myStats = myChar.showStats(myCharID);
+            str.setText(String.valueOf(myStats.getStr()));
+            agi.setText(String.valueOf(myStats.getAgi()));
+            vit.setText(String.valueOf(myStats.getVit()));
+            intel.setText(String.valueOf(myStats.getStatInt()));
+            dex.setText(String.valueOf(myStats.getDex()));
+            luk.setText(String.valueOf(myStats.getLuk()));
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return rowsUpdated;
     }
 }
