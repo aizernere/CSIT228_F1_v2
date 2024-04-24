@@ -1,6 +1,5 @@
 package com.example.csit228_f1_v2;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,8 +76,9 @@ public class LoginWindowController {
     private void login(String username, String password) {
         try(Connection c = MySQLConnection.getDatabase();
             Statement statement = c.createStatement()){
-            String query = "SELECT * FROM users where username='"+username+"'";
+            String query = "SELECT * FROM tbluser where username='"+username+"'";
             ResultSet res = statement.executeQuery(query);
+
             while(res.next()){
                 int id = res.getInt("userID");
                 int userPass = res.getInt("password");
@@ -86,13 +86,37 @@ public class LoginWindowController {
                 if(hash==userPass){
                     String name = res.getString("username");
                     String email = res.getString(4);
-                    System.out.println("ID: " + id + "\nName: " + name + "\nEmail: " + email + "\n");
+                    System.out.println("userID: " + id + "\nUsername: " + name + "\nEmail: " + email + "\n");
+                    showCharacter(id);
+                    return;
+                }else{
+                    System.out.println("Wrong username/password!");
+                    return;
                 }
-
             }
-        }catch (SQLException e){
+            if(!res.next()){
+                System.out.println("Account not found!");
+            }
+        }catch (IOException | SQLException e){
             e.printStackTrace();
         }
+    }
+
+    private void showCharacter(int id) throws IOException {
+        AnchorPane mainPane = (AnchorPane) miniWindow.getParent();
+        if (!mainPane.getChildren().isEmpty()) {
+            mainPane.getChildren().remove(1);
+        }
+
+        FXMLLoader charLoader = new FXMLLoader(CharacterWindowController.class.getResource("CharacterWindow.fxml"));
+        AnchorPane charPane = charLoader.load();
+        CharacterWindowController charController = charLoader.getController();
+        charController.initialize(charPane, id);
+        mainPane.getChildren().add(charPane);
+
+        // start position for mini window
+        Window window = new Window(mainPane.getScene(), charPane);
+        window.setCenter();
     }
 
     public void selectServer() throws IOException {

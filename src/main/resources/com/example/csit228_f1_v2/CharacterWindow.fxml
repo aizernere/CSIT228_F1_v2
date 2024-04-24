@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="289.0" maxWidth="600.0" minHeight="289.0" minWidth="600.0" prefHeight="289.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.csit228_f1_v2.CharacterWindowController">
+   <children>
+      <AnchorPane maxHeight="289.0" maxWidth="600.0" minHeight="289.0" minWidth="600.0" prefHeight="289.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <ImageView fitHeight="289.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@RO_StatusWindow.png" />
+               </image></ImageView>
+            <Label fx:id="str" layoutX="60.0" layoutY="192.0" text="str">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="agi" layoutX="58.0" layoutY="207.0" text="agi">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="vit" layoutX="60.0" layoutY="224.0" text="vit">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="intel" layoutX="60.0" layoutY="240.0" text="int">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="dex" layoutX="56.0" layoutY="256.0" text="dex">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="luk" layoutX="58.0" layoutY="273.0" text="luk">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="plusStr" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@arw_right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="plusAgi" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@arw_right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="plusVit" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@arw_right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="plusInt" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@arw_right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="plusDex" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@arw_right.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="plusLuk" fitHeight="11.0" fitWidth="11.0" layoutX="77.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@arw_right.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="str1" layoutX="330.0" layoutY="33.0" text="Username:">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="str11" layoutX="355.0" layoutY="56.0" text="Level:">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnLogout" layoutX="534.0" layoutY="246.0" maxHeight="25.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="50.0" text="logout">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" layoutX="288.0" layoutY="246.0" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="delete account">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnLvl" layoutX="387.0" layoutY="80.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Level Up">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReset" layoutX="387.0" layoutY="149.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Reset">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="str2" layoutX="330.0" layoutY="185.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Note: Unless you consume all status points, your Stats will not be changed." wrapText="true">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnMax" layoutX="387.0" layoutY="114.0" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="200.0" text="Level to 99">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
