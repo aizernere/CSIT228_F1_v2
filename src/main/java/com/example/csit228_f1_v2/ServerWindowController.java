@@ -2,25 +2,33 @@ package com.example.csit228_f1_v2;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
-public class LoginWindowController {
-    public Button btnLogin;
+import java.awt.*;
+import java.io.IOException;
+
+public class ServerWindowController {
+
     public Button btnExit;
-    public TextField tfUser;
-    public PasswordField pfPass;
+    public Label serverValkyrie;
+    public ListView listViewServer;
     @FXML
     private AnchorPane miniWindow;
+
 
     private double xOffset = 0;
     private double yOffset = 0;
 
     public void initialize(AnchorPane miniPane) {
+        listViewServer.getItems().add("Valkyrie");
+        listViewServer.getItems().add("Test Server");
         miniWindow = miniPane;
         miniWindow.setOnMousePressed(event -> {
             xOffset = event.getX();
@@ -50,24 +58,16 @@ public class LoginWindowController {
             miniWindow.setLayoutY(newY);
         });
 
+
     }
 
-    public void focus() {
-        tfUser.requestFocus();
+    public void close() {
+        Platform.exit();
     }
 
-    @FXML
-    private void handleKeyPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            String username = tfUser.getText();
-            String password = pfPass.getText();
-            login(username, password);
-        }
+    static void TestServer() {
+        System.out.println("Test Server Only");
     }
 
-    // Method to handle the login action
-    private void login(String username, String password) {
-        System.out.println("Logging in with username: " + username + " and password: " + password);
-    }
 }
 

@@ -8,11 +8,11 @@
    <children>
       <AnchorPane maxHeight="150.0" maxWidth="250.0" minHeight="150.0" minWidth="250.0" prefHeight="150.0" prefWidth="250.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-border-radius: 5;">
          <children>
-            <Button fx:id="btnExit" layoutX="192.0" layoutY="119.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#close" text="exit">
+            <Button fx:id="btnLogin" layoutX="135.0" layoutY="119.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" text="login">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font></Button>
-            <Button fx:id="btnLogin" layoutX="135.0" layoutY="119.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" text="login">
+            <Button fx:id="btnExit" layoutX="192.0" layoutY="119.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false"  text="exit">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font></Button>
@@ -21,8 +21,8 @@
                   <Font name="Tahoma Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="tfUser" layoutX="86.0" layoutY="40.0" />
-            <PasswordField fx:id="pfPass" layoutX="86.0" layoutY="75.0" />
+            <TextField fx:id="tfUser" layoutX="86.0" layoutY="40.0" onKeyPressed="#handleKeyPress"/>
+            <PasswordField fx:id="pfPass" layoutX="86.0" layoutY="75.0" onKeyPressed="#handleKeyPress"/>
             <Label layoutX="16.0" layoutY="80.0" text="Password" textFill="#3d5890">
                <font>
                   <Font name="Tahoma Bold" size="12.0" />
