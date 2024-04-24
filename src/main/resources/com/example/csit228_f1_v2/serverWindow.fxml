@@ -24,6 +24,11 @@
                </font>
             </Label>
             <Label layoutY="200.0" maxWidth="250.0" minWidth="250.0" text="                                                                            " textFill="#838383" underline="true" />
+            <Button fx:id="btnRegister" layoutX="7.0" layoutY="221.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#openRegister" text="register">
+               <font>
+                  <Font name="Tahoma" size="12.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
       <AnchorPane maxHeight="17.0" maxWidth="250.0" minHeight="17.0" minWidth="250.0" prefHeight="17.0" prefWidth="250.0" style="-fx-background-radius: 5 5 0 0; -fx-background-color: #a9bde8;">
          <children>

@@ -1,18 +1,17 @@
 package com.example.csit228_f1_v2;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
-import java.awt.*;
 import java.io.IOException;
+
 
 public class ServerWindowController {
 
@@ -58,6 +57,23 @@ public class ServerWindowController {
             miniWindow.setLayoutY(newY);
         });
 
+        listViewServer.setOnKeyPressed(event -> {
+            String selectedServer = listViewServer.getSelectionModel().getSelectedItem().toString();
+            if (event.getCode() == KeyCode.ENTER) {
+                if (selectedServer.equals("Test Server")) {
+                    TestServer();
+                } else {
+
+                    try {
+                        gotoValkyrie((AnchorPane) miniPane.getParent());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                }
+            }
+        });
+
 
     }
 
@@ -65,9 +81,44 @@ public class ServerWindowController {
         Platform.exit();
     }
 
-    static void TestServer() {
+    public static void TestServer() {
         System.out.println("Test Server Only");
     }
+    public static void gotoValkyrie(AnchorPane mainPane) throws IOException {
 
+        if (!mainPane.getChildren().isEmpty()) {
+            mainPane.getChildren().remove(1);
+        }
+
+        // Mini window
+        FXMLLoader miniLoader = new FXMLLoader(LoginApplication.class.getResource("loginWindow.fxml"));
+        AnchorPane miniPane = miniLoader.load();
+        LoginWindowController miniController = miniLoader.getController();
+        miniController.initialize(miniPane);
+
+        Window window = new Window(mainPane.getScene(), miniPane);
+        window.setCenter();
+
+        mainPane.getChildren().add(miniPane);
+        miniController.focus();
+    }
+
+    public void openRegister() throws IOException {
+        AnchorPane mainPane = (AnchorPane) miniWindow.getParent();
+        if (!mainPane.getChildren().isEmpty()) {
+            mainPane.getChildren().remove(1);
+        }
+
+        // Mini window
+        FXMLLoader miniLoader = new FXMLLoader(RegisterWindowController.class.getResource("registerWindow.fxml"));
+        AnchorPane miniPane = miniLoader.load();
+        RegisterWindowController miniController = miniLoader.getController();
+        miniController.initialize(miniPane);
+
+        Window window = new Window(mainPane.getScene(), miniPane);
+        window.setCenter();
+
+        mainPane.getChildren().add(miniPane);
+    }
 }
 

@@ -4,24 +4,22 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class LoginWindowController {
-    public Button btnLogin;
-    public Button btnExit;
+public class RegisterWindowController {
+    public Button btnBack;
     public TextField tfUser;
     public PasswordField pfPass;
+    public PasswordField pfPassConfirm;
+    public TextField tfEmail;
+
     @FXML
     private AnchorPane miniWindow;
 
@@ -29,6 +27,7 @@ public class LoginWindowController {
     private double yOffset = 0;
 
     public void initialize(AnchorPane miniPane) {
+
         miniWindow = miniPane;
         miniWindow.setOnMousePressed(event -> {
             xOffset = event.getX();
@@ -58,44 +57,9 @@ public class LoginWindowController {
             miniWindow.setLayoutY(newY);
         });
 
+
     }
-
-    public void focus() {
-        tfUser.requestFocus();
-    }
-
-    @FXML
-    private void handleKeyPress(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            String username = tfUser.getText();
-            String password = pfPass.getText();
-            login(username, password);
-        }
-    }
-
-    // Method to handle the login action
-    private void login(String username, String password) {
-        try(Connection c = MySQLConnection.getDatabase();
-            Statement statement = c.createStatement()){
-            String query = "SELECT * FROM users where username='"+username+"'";
-            ResultSet res = statement.executeQuery(query);
-            while(res.next()){
-                int id = res.getInt("userID");
-                int userPass = res.getInt("password");
-                int hash = password.hashCode();
-                if(hash==userPass){
-                    String name = res.getString("username");
-                    String email = res.getString(4);
-                    System.out.println("ID: " + id + "\nName: " + name + "\nEmail: " + email + "\n");
-                }
-
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void selectServer() throws IOException {
+    public void back() throws IOException {
         AnchorPane mainPane = (AnchorPane) miniWindow.getParent();
         if (!mainPane.getChildren().isEmpty()) {
             mainPane.getChildren().remove(1);
@@ -114,10 +78,29 @@ public class LoginWindowController {
         serverController.listViewServer.getSelectionModel().selectFirst();
     }
 
-    public void btnLogin(ActionEvent actionEvent) {
-        String username = tfUser.getText();
-        String password = pfPass.getText();
-        login(username, password);
+
+    public void submit() throws IOException {
+        String username = tfUser.getText().toString();
+        String password = pfPass.getText().toString();
+        String confirm = pfPassConfirm.getText().toString();
+        String email = tfEmail.getText().toString();
+        if(password.equals(confirm)){
+            register(username,password,email);
+        }else{
+            System.out.println("Passwords do not match!");
+        }
+
+
+    }
+
+    private void register(String username, String password,  String email) throws IOException {
+        Account newAccount = new Account();
+        int success = newAccount.InsertData(username, password, email);
+        if(success==1){
+            System.out.println("Successfully registered!");
+            back();
+        }else{
+            System.out.println("There is something wrong in the server");
+        }
     }
 }
-
