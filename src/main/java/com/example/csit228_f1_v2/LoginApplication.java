@@ -29,7 +29,7 @@ public class LoginApplication extends Application {
         mainPane.getChildren().add(serverPane);
 
         Scene scene = new Scene(mainPane, 1280, 720);
-        stage.setTitle("Login");
+        stage.setTitle("Char Stat Simulator");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setMaximized(false);

@@ -35,6 +35,8 @@ public class CharacterWindowController {
     public Label pts;
     static int myCharID;
     static Account myStats;
+    public Button btnLvl;
+    public Button btnMax;
     @FXML
     private AnchorPane miniWindow;
 
@@ -177,13 +179,16 @@ public class CharacterWindowController {
             PreparedStatement statement = c.prepareStatement(
                     "UPDATE tblchar SET lvl=1, pts = 0, str = 1, agi = 1, vit = 1, statInt = 1, dex = 1, luk = 1 WHERE charID=?"
             )){
-            lblLvl.setText("1");
-            pts.setText("0");
+            c.setAutoCommit(false);
+
 
             statement.setInt(1, myCharID);
             int rowsUpdated = statement.executeUpdate();
             System.out.println("Rows Updated: " + rowsUpdated);
 
+            c.commit();
+            lblLvl.setText("1");
+            pts.setText("0");
             //update
             Account myChar = new Account();
             myStats = myChar.showStats(myCharID);
@@ -198,6 +203,8 @@ public class CharacterWindowController {
                     stat.setVisible(false);
                 }
             }
+            btnLvl.setDisable(false);
+            btnMax.setDisable(false);
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -206,6 +213,8 @@ public class CharacterWindowController {
     public void strUp(MouseEvent mouseEvent) {
         str.setText(String.valueOf(Integer.valueOf(str.getText())+1));
         pts.setText(String.valueOf(Integer.valueOf(pts.getText())-2));
+        btnLvl.setDisable(true);
+        btnMax.setDisable(true);
         if(pts.getText().equals("0")){
             for(ImageView stat: Arrays.asList(plusStats)){
                 stat.setVisible(false);
@@ -214,6 +223,8 @@ public class CharacterWindowController {
             int success = update.UpdateData(str, agi, vit, intel, dex, luk , myCharID);
             if(success==1){
                 System.out.println("Stat changes are saved.");
+                btnLvl.setDisable(false);
+                btnMax.setDisable(false);
             }
         }
 
@@ -222,6 +233,8 @@ public class CharacterWindowController {
     public void agiUp(MouseEvent mouseEvent) {
         agi.setText(String.valueOf(Integer.valueOf(agi.getText())+1));
         pts.setText(String.valueOf(Integer.valueOf(pts.getText())-2));
+        btnLvl.setDisable(true);
+        btnMax.setDisable(true);
         if(pts.getText().equals("0")){
             for(ImageView stat: Arrays.asList(plusStats)){
                 stat.setVisible(false);
@@ -230,6 +243,8 @@ public class CharacterWindowController {
             int success = update.UpdateData(str, agi, vit, intel, dex, luk , myCharID);
             if(success==1){
                 System.out.println("Stat changes are saved.");
+                btnLvl.setDisable(false);
+                btnMax.setDisable(false);
             }
         }
     }
@@ -237,6 +252,8 @@ public class CharacterWindowController {
     public void vitUp(MouseEvent mouseEvent) {
         vit.setText(String.valueOf(Integer.valueOf(vit.getText())+1));
         pts.setText(String.valueOf(Integer.valueOf(pts.getText())-2));
+        btnLvl.setDisable(true);
+        btnMax.setDisable(true);
         if(pts.getText().equals("0")){
             for(ImageView stat: Arrays.asList(plusStats)){
                 stat.setVisible(false);
@@ -245,6 +262,8 @@ public class CharacterWindowController {
             int success = update.UpdateData(str, agi, vit, intel, dex, luk , myCharID);
             if(success==1){
                 System.out.println("Stat changes are saved.");
+                btnLvl.setDisable(false);
+                btnMax.setDisable(false);
             }
         }
     }
@@ -252,6 +271,8 @@ public class CharacterWindowController {
     public void intUp(MouseEvent mouseEvent) {
         intel.setText(String.valueOf(Integer.valueOf(intel.getText())+1));
         pts.setText(String.valueOf(Integer.valueOf(pts.getText())-2));
+        btnLvl.setDisable(true);
+        btnMax.setDisable(true);
         if(pts.getText().equals("0")){
             for(ImageView stat: Arrays.asList(plusStats)){
                 stat.setVisible(false);
@@ -260,6 +281,8 @@ public class CharacterWindowController {
             int success = update.UpdateData(str, agi, vit, intel, dex, luk , myCharID);
             if(success==1){
                 System.out.println("Stat changes are saved.");
+                btnLvl.setDisable(false);
+                btnMax.setDisable(false);
             }
         }
     }
@@ -267,6 +290,8 @@ public class CharacterWindowController {
     public void dexUp(MouseEvent mouseEvent) {
         dex.setText(String.valueOf(Integer.valueOf(dex.getText())+1));
         pts.setText(String.valueOf(Integer.valueOf(pts.getText())-2));
+        btnLvl.setDisable(true);
+        btnMax.setDisable(true);
         if(pts.getText().equals("0")){
             for(ImageView stat: Arrays.asList(plusStats)){
                 stat.setVisible(false);
@@ -275,6 +300,8 @@ public class CharacterWindowController {
             int success = update.UpdateData(str, agi, vit, intel, dex, luk , myCharID);
             if(success==1){
                 System.out.println("Stat changes are saved.");
+                btnLvl.setDisable(false);
+                btnMax.setDisable(false);
             }
         }
     }
@@ -282,6 +309,8 @@ public class CharacterWindowController {
     public void lukUp(MouseEvent mouseEvent) {
         luk.setText(String.valueOf(Integer.valueOf(luk.getText())+1));
         pts.setText(String.valueOf(Integer.valueOf(pts.getText())-2));
+        btnLvl.setDisable(true);
+        btnMax.setDisable(true);
         if(pts.getText().equals("0")){
             for(ImageView stat: Arrays.asList(plusStats)){
                 stat.setVisible(false);
@@ -290,6 +319,8 @@ public class CharacterWindowController {
             int success = update.UpdateData(str, agi, vit, intel, dex, luk , myCharID);
             if(success==1){
                 System.out.println("Stat changes are saved.");
+                btnLvl.setDisable(false);
+                btnMax.setDisable(false);
             }
         }
     }

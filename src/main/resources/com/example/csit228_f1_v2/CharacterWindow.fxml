@@ -83,12 +83,12 @@
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="btnLogout" layoutX="534.0" layoutY="246.0" maxHeight="25.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="50.0" text="logout">
+            <Button fx:id="btnLogout" layoutX="539.0" layoutY="258.0" maxHeight="25.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="50.0" text="logout">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnDelete" layoutX="288.0" layoutY="246.0" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteUserChar" prefHeight="25.0" prefWidth="100.0" text="delete account">
+            <Button fx:id="btnDelete" layoutX="293.0" layoutY="258.0" maxHeight="25.0" maxWidth="100.0" minHeight="25.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteUserChar" prefHeight="25.0" prefWidth="100.0" text="delete account">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
@@ -103,7 +103,7 @@
                   <Font name="Tahoma" size="12.0" />
                </font>
             </Button>
-            <Label fx:id="str2" layoutX="330.0" layoutY="185.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Note: Unless you consume all status points, your Stats will not be changed." wrapText="true">
+            <Label fx:id="str2" layoutX="330.0" layoutY="185.0" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Note: Unless you consume all status points, your Stats will not be changed. This will also disable level up buttons." wrapText="true">
                <font>
                   <Font name="Tahoma" size="12.0" />
                </font>
